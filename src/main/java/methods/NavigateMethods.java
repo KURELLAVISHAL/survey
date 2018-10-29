@@ -1,5 +1,7 @@
 package methods;
 
+import java.util.List;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -84,10 +86,10 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
 	 * @param inOut : String : Zoom in or out
 	 * @param accessName : String : Locator value
 	 */
-	public void zoomInOutTillElementDisplay(String accessType,String inOut,String accessName)
+	public void zoomInOutTillElementDisplay(WebElement element,String inOut)
 	{
 		Actions action = new Actions(driver);
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		while(true)
 		{
 			if (element.isDisplayed())
@@ -116,10 +118,10 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
 	 * @param accessType : String : Locator type (id, name, class, xpath, css)
 	 * @param accessName : String : Locator value
 	 */
-	public void hoverOverElement(String accessType, String accessName)
+	public void hoverOverElement(WebElement element)
 	{
 		Actions action = new Actions(driver);
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		
 		action.moveToElement(element).perform();
 	}
@@ -128,9 +130,9 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
 	 * @param accessType : String : Locator type (id, name, class, xpath, css)
 	 * @param accessName : String : Locator value
 	 */
-	public void scrollToElement(String accessType, String accessName)
+	public void scrollToElement(WebElement element)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].scrollIntoView();", element);
@@ -218,34 +220,23 @@ public class NavigateMethods extends SelectElementByType implements BaseTest
      * @param accessType : String : Locator type (id, name, class, xpath, css)
 	 * @param accessName : String : Locator value
      * */
-    public void switchFrameByWebElement(String accessType, String accessName)
+    public void switchFrameByWebElement(WebElement element)
     {
-    	element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+    	//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
     	driver.switchTo().frame(element);
     }
     
-    public void switchFrameByMethods(String method, String value)
-    {
-    	switch(method)
-    	{
-    		case "index" : switchFrameByIndex(Integer.parseInt(value));
-    						break;
-    		case "name or id" :
-    					switchFrameByNameorId(value);
-    					break;
-    		case "id" :
-    		case "name" :
-    		case "xpath" :
-    		case "css" :
-    		case "tagName" : 
-    						switchFrameByWebElement(method,value);
-						break;
-    	}
-    }
+   
 
     /** method to switch to default content*/
     public void switchToDefaultContent()
     {
     	driver.switchTo().defaultContent();
+    }
+    
+    
+    public void switchToActiveElement()
+    {
+    	driver.switchTo().activeElement();
     }
 }

@@ -19,20 +19,20 @@ public class InputMethods extends SelectElementByType implements BaseTest
 	 * @param text : String : Text value to enter in field
 	   @param accessName : String : Locator value
 	 */
-	public void enterText(String accessType,String text,String accessName)
+	public void enterText(WebElement element,String text)
 	{
-		wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		driver.findElement(getelementbytype(accessType, accessName)).sendKeys(text);
+		//wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		element.sendKeys(text);
 	}
 	
 	/** Method to clear text of text field
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void clearText(String accessType, String accessName)
+	public void clearText(WebElement element)
 	{
-		wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		driver.findElement(getelementbytype(accessType, accessName)).clear();
+		//wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		element.clear();
 	}
 	
 	/** Method to select element from Dropdown by type
@@ -60,10 +60,10 @@ public class InputMethods extends SelectElementByType implements BaseTest
 	@param option : String : Option to select
 	@param accessName : String : Locator value
 	*/
-	public void selectOptionFromDropdown(String accessType, String by, String option, String accessName)
+	public void selectOptionFromDropdown(WebElement element, String by, String option)
 	{
-		dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		selectList = new Select(dropdown);
+		//dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		selectList = new Select(element);
 		selectelementfromdropdownbytype(selectList,by,option);
 	}
 	
@@ -80,10 +80,10 @@ public class InputMethods extends SelectElementByType implements BaseTest
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void unselectAllOptionFromMultiselectDropdown(String accessType, String accessName)
+	public void unselectAllOptionFromMultiselectDropdown(WebElement element)
 	{
-		dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		selectList = new Select(dropdown);
+		//dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		selectList = new Select(element);
 		selectList.deselectAll();
 	}
 	
@@ -91,42 +91,34 @@ public class InputMethods extends SelectElementByType implements BaseTest
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void checkCheckbox(String accessType, String accessName)
+	public void checkCheckbox(WebElement element)
 	{
-		WebElement checkbox= wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		if (!checkbox.isSelected())
-			checkbox.click();
+		//WebElement checkbox= wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		if (!element.isSelected())
+			element.click();
 	}
 	
 	/** Method to uncheck check-box
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void uncheckCheckbox(String accessType, String accessName)
+	public void uncheckCheckbox(WebElement element)
 	{
-		WebElement checkbox= wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		if (checkbox.isSelected())
-			checkbox.click();
+		//WebElement checkbox= wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		if (element.isSelected())
+			element.click();
 	}
 	
-	/** Method to toggle check-box status
-	@param accessType : String : Locator type (id, name, class, xpath, css)
-	@param accessName : String : Locator value
-	*/
-	public void toggleCheckbox(String accessType, String accessName)
-	{
-		wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName))).click();
-	}
 	
 	/** Method to select radio button
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void selectRadioButton(String accessType, String accessName)
+	public void selectRadioButton(WebElement element)
 	{
-		WebElement radioButton = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		if(!radioButton.isSelected())
-			radioButton.click();
+		//WebElement radioButton = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		if(!element.isSelected())
+			element.click();
 	}
 	
 	/** Method to select option from radio button group
@@ -135,9 +127,9 @@ public class InputMethods extends SelectElementByType implements BaseTest
 	@param option : String : Option to select
 	@param accessName : String : Locator value
 	*/
-	public void selectOptionFromRadioButtonGroup(String accessType, String by, String option, String accessName)
+	public void selectOptionFromRadioButtonGroup(List<WebElement> element, String by, String option)
 	{
-		List<WebElement> radioButtonGroup = driver.findElements(getelementbytype(accessType, accessName));
+		//List<WebElement> radioButtonGroup = driver.findElements(getelementbytype(accessType, accessName));
 		String getoption = null;
 		
 		/*System.out.println("cnt : "+radioButtonGroup.size());
@@ -146,7 +138,7 @@ public class InputMethods extends SelectElementByType implements BaseTest
 			System.out.println(radioButtonGroup.get(i).isSelected());
 		}*/
 		
-		for(WebElement temp : radioButtonGroup)
+		for(WebElement temp : element)
 		{
 			if(by.equals("value"))
 			{

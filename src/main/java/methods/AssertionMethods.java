@@ -70,9 +70,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	 * @param accessName : String : Locator value
 	 * @return String
 	 */
-	public String getElementText(String accessType, String accessName)
+	public String getElementText(WebElement element)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		return element.getText();
 		
 	}
@@ -83,9 +83,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	* @param accessName : String : Locator value
 	* @param testCase : Boolean : test case [true or false]
 	*/
-	public void checkElementText(String accessType,String actualValue,String accessName,boolean testCase) throws TestCaseFailed
+	public void checkElementText(WebElement element,String actualValue,boolean testCase) throws TestCaseFailed
 	{
-		String elementText = getElementText(accessType, accessName);
+		String elementText = getElementText(element);
 		
 		if (testCase)
 		{
@@ -105,9 +105,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	* @param accessName : String : Locator value
 	* @param testCase : Boolean : test case [true or false]
 	*/
-	public void checkElementPartialText(String accessType,String actualValue,String accessName,boolean testCase) throws TestCaseFailed
+	public void checkElementPartialText(WebElement element,String actualValue,boolean testCase) throws TestCaseFailed
 	{
-		String elementText = getElementText(accessType, accessName);
+		String elementText = getElementText(element);
 
 	    if (testCase)
 	    {
@@ -126,9 +126,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	* @param accessName : String : Locator value
 	* @return Boolean
 	*/
-	public boolean isElementEnabled(String accessType, String accessName)
+	public boolean isElementEnabled(WebElement element)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		return element.isEnabled();
 	}
 	
@@ -137,9 +137,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	@param accessName : String : Locator value
 	@param testCase : Boolean : test case [true or false]
 	*/
-	public void checkElementEnable(String accessType, String accessName, boolean testCase) throws TestCaseFailed
+	public void checkElementEnable(WebElement element, boolean testCase) throws TestCaseFailed
 	{
-		boolean result=isElementEnabled(accessType,accessName);
+		boolean result=isElementEnabled(element);
 		if(testCase)
 		{
 			if (!result)
@@ -158,9 +158,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	@param attributeName : String : attribute name
 	@return String
 	*/
-	public String getElementAttribute(String accessType,String accessName,String attributeName)
+	public String getElementAttribute(WebElement element,String attributeName)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		return element.getAttribute(attributeName);
 	}
 	
@@ -171,9 +171,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	@param accessName : String : Locator value
 	@param testCase : Boolean : test case [true or false]
 	*/
-	public void checkElementAttribute(String accessType, String attributeName, String attributeValue, String accessName, boolean testCase) throws TestCaseFailed
+	public void checkElementAttribute(WebElement element, String attributeName, String attributeValue, boolean testCase) throws TestCaseFailed
 	{
-		String attrVal = getElementAttribute(accessType, accessName, attributeName);
+		String attrVal = getElementAttribute(element, attributeName);
 		if(testCase)
 		{
 			if(!attrVal.equals(attributeValue))
@@ -191,9 +191,9 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	@param accessName : String : Locator value
 	@return Boolean
 	*/
-	public boolean isElementDisplayed(String accessType,String accessName)
+	public boolean isElementDisplayed(WebElement element)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		return element.isDisplayed();
 	}
 	
@@ -202,18 +202,18 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	@param accessName : String : Locator value
 	@param testCase : Boolean : test case [true or false]
 	*/
-	public void checkElementPresence(String accessType,String accessName,boolean testCase) throws TestCaseFailed
+	public void checkElementPresence(WebElement element,boolean testCase) throws TestCaseFailed
 	{
 		if (testCase)
 		{
-			if (!isElementDisplayed(accessType, accessName))
+			if (!isElementDisplayed(element))
 				throw new TestCaseFailed("Element Not Present");
 		}
 		else
 		{
 			try
 			{
-				if(isElementDisplayed(accessType, accessName))
+				if(isElementDisplayed(element))
 					throw new Exception("Present"); //since it is negative test and we found element
 			}
 			catch(Exception e)
@@ -229,12 +229,12 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	@param accessName : String : Locator value
 	@param shouldBeChecked : Boolean : test case [true or false]
 	*/
-	public void isCheckboxChecked(String accessType,String accessName,boolean shouldBeChecked) throws TestCaseFailed
+	public void isCheckboxChecked(WebElement element,boolean shouldBeChecked) throws TestCaseFailed
 	{
-		WebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		if((!checkbox.isSelected()) && shouldBeChecked)
+		//WebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		if((!element.isSelected()) && shouldBeChecked)
 			throw new TestCaseFailed("Checkbox is not checked");
-		else if(checkbox.isSelected() && !shouldBeChecked)
+		else if(element.isSelected() && !shouldBeChecked)
 			throw new TestCaseFailed("Checkbox is checked");
 	}
 	
@@ -243,20 +243,17 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	@param accessName : String : Locator value
 	@param shouldBeChecked : Boolean : test case [true or false]
 	*/
-	public void isRadioButtonSelected(String accessType,String accessName,boolean shouldBeSelected) throws TestCaseFailed
+	public void isRadioButtonSelected(WebElement element,boolean shouldBeSelected) throws TestCaseFailed
 	{
-		WebElement radioButton = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		if((!radioButton.isSelected()) && shouldBeSelected)
+		//WebElement radioButton = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		if((!element.isSelected()) && shouldBeSelected)
 			throw new TestCaseFailed("Radio Button not selected");
-		else if(radioButton.isSelected() && !shouldBeSelected)
+		else if(element.isSelected() && !shouldBeSelected)
 			throw new TestCaseFailed("Radio Button is selected");
 	}
 
 	//method to assert option from radio button group is selected/unselected
-	public void isOptionFromRadioButtonGroupSelected(String accessType,String by,String option,String accessName,boolean shouldBeSelected)
-	{
-		WebElement radioButtonGroup = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-	}
+	
 	
 	/** method to get javascript pop-up alert text
 	 * @return String
@@ -302,11 +299,11 @@ public class AssertionMethods extends SelectElementByType implements BaseTest
 	 * @param shouldBeSelected : Boolean : test case [true or false]
 	 * @throws TestCaseFailed
 	 */
-	public void isOptionFromDropdownSelected(String accessType,String by,String option,String accessName,boolean shouldBeSelected) throws TestCaseFailed
+	public void isOptionFromDropdownSelected(WebElement element,String by,String option,boolean shouldBeSelected) throws TestCaseFailed
 	{
 		Select selectList=null;
-		WebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
-		selectList = new Select(dropdown);
+		//WebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		selectList = new Select(element);
 		
 		String actualValue=null;
 		if(by.equals("text"))

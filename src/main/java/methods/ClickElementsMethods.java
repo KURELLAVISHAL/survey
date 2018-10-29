@@ -16,9 +16,9 @@ public class ClickElementsMethods extends SelectElementByType implements BaseTes
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void click(String accessType, String accessName)
+	public void click(WebElement element)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		element.click();
 	}
 	
@@ -26,9 +26,9 @@ public class ClickElementsMethods extends SelectElementByType implements BaseTes
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void clickForcefully(String accessType, String accessName)
+	public void clickForcefully(WebElement element)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessName)));
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();",element);
 	}
@@ -37,9 +37,9 @@ public class ClickElementsMethods extends SelectElementByType implements BaseTes
 	@param accessType : String : Locator type (id, name, class, xpath, css)
 	@param accessName : String : Locator value
 	*/
-	public void doubleClick(String accessType, String accessValue)
+	public void doubleClick(WebElement element)
 	{
-		element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessValue)));
+		//element = wait.until(ExpectedConditions.presenceOfElementLocated(getelementbytype(accessType, accessValue)));
 
 		Actions action = new Actions(driver);
 		action.moveToElement(element).doubleClick().perform();
