@@ -1,0 +1,15 @@
+package stepDefintions;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty"},
+		features = {"E:\\eclipse\\selenium-cucumber-java-master\\src\\test\\resources\\features\\login.feature"}
+)
+public class RunCukeTest {
+	
+}
