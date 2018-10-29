@@ -15,10 +15,13 @@ Feature: login and logout
     Then enter userid with "<x>"
     Then enter password with "<y>"
     And click on login button
+    Then validate userid and password fields with "<z>"
 
     Examples: 
-      | x               | y    |
-      |                 |      |
-      | admin@gmail.com | 2222 |
-      | admi@gmail.com  | 1111 |
-      | admin@gmail.com | 1111 |
+      | x               | y    | z             |
+      |                 |      | blank         |
+      | admin@gmail.com |      | blankpwd      |
+      |                 | 1111 | blankuserid   |
+      | admin@gmail.com | 2222 | invalidpwd    |
+      | admi@gmail.com  | 1111 | invaliduserid |
+      | admin@gmail.com | 1111 | valid         |

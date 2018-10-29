@@ -7,14 +7,25 @@ import org.openqa.selenium.WebElement;
 import methods.ExplicitWaitMethods;
 import methods.TestCaseFailed;
 import pages.Loginpage;
+import cucumber.api.Scenario;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import env.BaseTest;
 
 public class PredefinedStepDefinitions implements BaseTest
 {
+	Scenario s;
+	public Loginpage lp;
 	
-	Loginpage lp=new Loginpage(driver);
+	@Before
+	public void method1(Scenario x) throws Exception
+	{
+		//use scenario object for current scenario
+		this.s=x;
+		lp=new Loginpage(driver);
+	}
+	
 	//Navigation Steps
 	
 		//Step to navigate to specified URL
@@ -228,6 +239,38 @@ public class PredefinedStepDefinitions implements BaseTest
 	{
 		navigationObj.switchToActiveElement();
 		lp.clickOk();
+	}
+	
+	@Then("^validate userid and password fields with \"(.*)\"$")
+	public void validateUserPwdFields(String x) throws Exception
+	{
+		if(x.equalsIgnoreCase("blank")&&lp.blankEmailErr.isDisplayed()&&lp.blankPwdErr.isDisplayed())
+		{
+			s.write("blank test passesd");
+		}
+		else if(x.equalsIgnoreCase("blankuserid")&&lp.blankEmailErr.isDisplayed())
+		{
+			s.write("blank user id test passed");
+		}
+		else if(x.equalsIgnoreCase("blankpwd")&&lp.blankPwdErr.isDisplayed())
+		{
+			s.write("blank password test passed");
+		}
+		else if(x.equalsIgnoreCase("invalidpwd")&&lp.invalidEmailPwdErr.isDisplayed())
+		{
+			s.write("invalid password test passed");
+		}
+		else if(x.equalsIgnoreCase("invaliduserid")&&lp.invalidEmailPwdErr.isDisplayed())
+		{
+			s.write("invalid user id test passed");
+		}
+		else if(x.equalsIgnoreCase("valid")&&lp.logoutBtn.isDisplayed())
+		{
+			s.write("valid user id and password test  passed");
+		}
+		else {
+			screenshotObj.takeScreenShot();
+		}
 	}
   	
 }

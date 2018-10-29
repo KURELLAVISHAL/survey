@@ -25,6 +25,18 @@ public class Loginpage implements BaseTest
 	@FindBy(xpath="(//*[@class='btn btn-info'])[1]")
 	public WebElement okForLogout;
 	
+	@FindBy(xpath="//*[text()='The email is required']")
+	public WebElement blankEmailErr;
+	
+	@FindBy(xpath="//*[text()='The password is required']")
+	public WebElement blankPwdErr;
+	
+	@FindBy(xpath="//*[text()='The input is not a valid email address']")
+	public WebElement invalidEmailErr;
+	
+	@FindBy(xpath="//*[text()='Please enter valid Email and Password.']")
+	public WebElement invalidEmailPwdErr;
+	
 	
 	
 	public Loginpage(WebDriver x)
