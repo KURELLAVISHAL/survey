@@ -25,3 +25,12 @@ Feature: login and logout
       | admin@gmail.com | 2222 | invalidpwd    |
       | admi@gmail.com  | 1111 | invaliduserid |
       | admin@gmail.com | 1111 | valid         |
+      
+      
+  @tc-3
+  Scenario: Open login page and do logout
+    Given navigate to "http://stage.survey.hff.ukkoteknik.com/admin/"
+    Then enter userid with "admin@gmail.com"
+    Then enter password with "1111"
+    And click on login button
+    Then click on language submodule

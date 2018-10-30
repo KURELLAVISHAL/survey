@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
 		plugin = {"pretty"},
 		features = {"E:\\eclipse\\selenium-cucumber-java-master\\src\\test\\resources\\features\\login.feature"},
-		tags= {"@tc-2"}
+		tags= {"@tc-3"}
 )
 public class RunCukeTest {
 	

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import methods.ExplicitWaitMethods;
 import methods.TestCaseFailed;
 import pages.Loginpage;
+import pages.Modules;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -17,6 +18,7 @@ public class PredefinedStepDefinitions implements BaseTest
 {
 	Scenario s;
 	public Loginpage lp;
+	public Modules m;
 	
 	@Before
 	public void method1(Scenario x) throws Exception
@@ -24,6 +26,7 @@ public class PredefinedStepDefinitions implements BaseTest
 		//use scenario object for current scenario
 		this.s=x;
 		lp=new Loginpage(driver);
+		m=new Modules(driver);
 	}
 	
 	//Navigation Steps
@@ -271,6 +274,13 @@ public class PredefinedStepDefinitions implements BaseTest
 		else {
 			screenshotObj.takeScreenShot();
 		}
+	}
+	
+	
+	@Then("^click on language submodule$")
+	public void clickLanguageSubModule()
+	{
+		m.clickLanguage();
 	}
   	
 }
