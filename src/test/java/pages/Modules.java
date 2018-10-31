@@ -1,15 +1,21 @@
 package pages;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import env.BaseTest;
+import methods.ExplicitWaitMethods;
+
 
 public class Modules implements BaseTest
 {
 	public WebDriver driver;
+	
 	
 	@FindBy(xpath="//*[@class='btn btn-flat log_out']")
 	public WebElement logoutBtn;
@@ -28,6 +34,7 @@ public class Modules implements BaseTest
 	
 	@FindBy(xpath="//*[text()='Language']")
 	public WebElement language;
+	
 	
 	@FindBy(xpath="//*[text()='Country ']")
 	public WebElement country;
@@ -162,145 +169,263 @@ public class Modules implements BaseTest
 	{
 		this.driver=x;
 		PageFactory.initElements(driver, this);
+		
 	}
 	
 	public void logout()
 	{
 		clickObj.click(logoutBtn);
 		navigationObj.switchToActiveElement();
+		ExplicitWaitMethods.waitForVisibility(okForLogout);
 		clickObj.click(okForLogout);
 	}
 	
 	public void clickDashboardSubModule()
 	{
 		clickObj.click(dashboardModule);
+		ExplicitWaitMethods.waitForVisibility(dashboardSubModule);
 		clickObj.click(dashboardSubModule);
 	}
 	
 	public void clickLanguage()
 	{
 		clickObj.click(masterDataModule);
+		ExplicitWaitMethods.waitForVisibility(language);
 		clickObj.click(language);
 	}
 	
 	public void clickCountry()
 	{
 		clickObj.click(masterDataModule);
-		clickObj.click(country);
+		ExplicitWaitMethods.waitForVisibility(country);
+		country.click();
 	}
 	
 	public void clickState()
 	{
 		clickObj.click(masterDataModule);
+		ExplicitWaitMethods.waitForVisibility(state);
 		clickObj.click(state);
 	}
 	
 	public void clickCity()
 	{
 		clickObj.click(masterDataModule);
+		ExplicitWaitMethods.waitForVisibility(city);
 		clickObj.click(city);
 	}
 	
 	public void clickVillage()
 	{
 		clickObj.click(masterDataModule);
+		ExplicitWaitMethods.waitForVisibility(village);
 		clickObj.click(village);
 	}
 	
 	public void clickMainMenus()
 	{
 		clickObj.click(masterDataModule);
+		ExplicitWaitMethods.waitForVisibility(mainMenus);
 		clickObj.click(mainMenus);
 	}
 	
 	public void clickSubMenus()
 	{
 		clickObj.click(masterDataModule);
+		ExplicitWaitMethods.waitForVisibility(subMenus);
 		clickObj.click(subMenus);
 	}
 	
 	public void clickActivityLogs()
 	{
 		clickObj.click(masterDataModule);
+		ExplicitWaitMethods.waitForVisibility(activityLog);
 		clickObj.click(activityLog);
 	}
 	
 	public void clickUsers()
 	{
 		clickObj.click(userManagement);
+		ExplicitWaitMethods.waitForVisibility(users);
 		clickObj.click(users);
 	}
 	
 	public void clickRoles()
 	{
 		clickObj.click(roleManagement);
+		ExplicitWaitMethods.waitForVisibility(roles);
 		clickObj.click(roles);
 	}
 	
 	public void clickRolePermission()
 	{
 		clickObj.click(roleManagement);
+		ExplicitWaitMethods.waitForVisibility(rolePermission);
 		clickObj.click(rolePermission);
 	}
 	
 	public void clickSurveyTypes()
 	{
 		clickObj.click(surveyManagement);
+		ExplicitWaitMethods.waitForVisibility(surveyTypes);
 		clickObj.click(surveyTypes);
 	}
 	
 	public void clickSurveyCategory()
 	{
 		clickObj.click(surveyManagement);
+		ExplicitWaitMethods.waitForVisibility(surveyCategory);
 		clickObj.click(surveyCategory);
 	}
 	
 	public void clickCreateSurvey()
 	{
 		clickObj.click(surveyManagement);
+		ExplicitWaitMethods.waitForVisibility(createSurvey);
 		clickObj.click(createSurvey);
 	}
 	
 	public void clickAssignUsersToSurvey()
 	{
 		clickObj.click(surveyManagement);
+		ExplicitWaitMethods.waitForVisibility(assignUsersToSurvey);
 		clickObj.click(assignUsersToSurvey);
 	}
 	
 	public void clickQuestionGroup()
 	{
 		clickObj.click(questionManagement);
+		ExplicitWaitMethods.waitForVisibility(questionGroup);
 		clickObj.click(questionGroup);
 	}
 	
 	public void clickQuestionType()
 	{
 		clickObj.click(questionManagement);
+		ExplicitWaitMethods.waitForVisibility(questionType);
 		clickObj.click(questionType);
 	}
 	
 	public void clickQuestions()
 	{
 		clickObj.click(questionManagement);
+		ExplicitWaitMethods.waitForVisibility(questions);
 		clickObj.click(questions);
 	}
 	
 	public void clickSurveyQuestions()
 	{
 		clickObj.click(questionManagement);
+		ExplicitWaitMethods.waitForVisibility(surveyQuestions);
 		clickObj.click(surveyQuestions);
 	}
 	public void clickCloneSurveyQuestions()
 	{
 		clickObj.click(questionManagement);
+		ExplicitWaitMethods.waitForVisibility(cloneSurveyQuestions);
 		clickObj.click(cloneSurveyQuestions);
 	}
 	
 	public void clickAssignQuestionsToSurvey()
 	{
 		clickObj.click(questionManagement);
+		ExplicitWaitMethods.waitForVisibility(assignQuestionsToSurvey);
 		clickObj.click(assignQuestionsToSurvey);
 	}
+	
+	public void clickDevices()
+	{
+		clickObj.click(deviceManagement);
+		ExplicitWaitMethods.waitForVisibility(devices);
+		clickObj.click(devices);
+	}
+	
+	public void clickAssignDevice()
+	{
+		clickObj.click(deviceManagement);
+		ExplicitWaitMethods.waitForVisibility(assignDevice);
+		clickObj.click(assignDevice);
+	}
+	
+	public void clickCreateNotification()
+	{
+		clickObj.click(notificationManagement);
+		ExplicitWaitMethods.waitForVisibility(createNotification);
+		clickObj.click(createNotification);
+	}
+	
+	public void clickCreateGlobalNotification()
+	{
+		clickObj.click(notificationManagement);
+		ExplicitWaitMethods.waitForVisibility(createGlobalNotification);
+		clickObj.click(createGlobalNotification);
+	}
+	
+	
+	public void clickAssignNotification()
+	{
+		clickObj.click(notificationManagement);
+		ExplicitWaitMethods.waitForVisibility(assignNotification);
+		clickObj.click(assignNotification);
+	}
+	
+	public void clickFieldNames()
+	{
+		clickObj.click(mobileAppParameters);
+		ExplicitWaitMethods.waitForVisibility(fieldNames);
+		clickObj.click(fieldNames);
+	}
+	
+	public void clickMobileScreens()
+	{
+		clickObj.click(mobileAppParameters);
+		ExplicitWaitMethods.waitForVisibility(mobileScreens);
+		clickObj.click(mobileScreens);
+	}
+	
+	public void clickMobileScreenFields()
+	{
+		clickObj.click(mobileAppParameters);
+		ExplicitWaitMethods.waitForVisibility(mobileScreenFields);
+		clickObj.click(mobileScreenFields);
+	}
+	
+	public void clickScreens()
+	{
+		clickObj.click(mobileAppParameters);
+		ExplicitWaitMethods.waitForVisibility(screens);
+		clickObj.click(screens);
+	}
+	
+	public void clickConfigurations()
+	{
+		clickObj.click(mobileAppParameters);
+		ExplicitWaitMethods.waitForVisibility(configurations);
+		clickObj.click(configurations);
+	}
+	
+	
+	public void clickReports()
+	{
+		clickObj.click(surveyResults);
+		ExplicitWaitMethods.waitForVisibility(reports);
+		clickObj.click(reports);
+	}
+	
+	public void clickBatch()
+	{
+		clickObj.click(batchManagement);
+		ExplicitWaitMethods.waitForVisibility(batch);
+		clickObj.click(batch);
+	}
+	
+	public void clickMessageManagement()
+	{
+		clickObj.click(messageManagementModule);
+		ExplicitWaitMethods.waitForVisibility(messageManagementSubModule);
+		clickObj.click(messageManagementSubModule);
+	}
+	
 	
 
 

@@ -121,4 +121,10 @@ public static WebDriver driver;
 		WebDriverWait waitForAlert = new WebDriverWait(driver, time);
 		waitForAlert.until(ExpectedConditions.alertIsPresent());
 	}
+	
+	public static void waitForVisibility(WebElement element) 
+	{
+	       
+	       wait.until(ExpectedConditions.visibilityOf(element));
+	}
 }

@@ -33,4 +33,4 @@ Feature: login and logout
     Then enter userid with "admin@gmail.com"
     Then enter password with "1111"
     And click on login button
-    Then click on language submodule
+    Then click on city submodule

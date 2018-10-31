@@ -282,5 +282,11 @@ public class PredefinedStepDefinitions implements BaseTest
 	{
 		m.clickLanguage();
 	}
+	
+	@Then("^click on city submodule$")
+	public void clickCitySubModule()
+	{
+		m.clickCity();
+	}
   	
 }
